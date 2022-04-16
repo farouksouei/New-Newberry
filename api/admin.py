@@ -9,6 +9,6 @@ from .models import Article
 
 @admin.register(Article)
 class ArticleModel(admin.ModelAdmin):
-    list_filter = ('title',)
+    list_filter = ('title', 'description', 'created_at')
     list_display = ('title', 'description')
-    date_hierarchy = 'created_at'
+    date_hierarchy = ('created_at')
