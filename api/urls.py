@@ -8,6 +8,6 @@ router.register('users', UserViewSet)
 
 urlpatterns = [
 
-    path('api', include(router.urls)),
+    path('api/', include(router.urls)),
 
 ]
