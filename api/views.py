@@ -1,12 +1,23 @@
+from multiprocessing import AuthenticationError
 from api.models import Article
 from .serializers import ArticleSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework import generics
+from rest_framework import mixins
 from django.shortcuts import get_object_or_404
+from rest_framework.authtoken.views import TokenAuthentication
 # Create your views here.
 
 
+class ArticleViewSet(viewsets.ModelViewSet):
+    queryset = Article.objects.all()
+    serializer_class = ArticleSerializer
+    Authentication_classes = (TokenAuthentication)
+
+
+"""
 class ArticleViewSet(viewsets.ViewSet):
     def list(self, request):
         articles = Article.objects.all()
@@ -38,7 +49,7 @@ class ArticleViewSet(viewsets.ViewSet):
         article = Article.objects.get(pk=pk)
         article.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
+"""
 
 """
 class ArticleList(generics.GenericAPIView,
