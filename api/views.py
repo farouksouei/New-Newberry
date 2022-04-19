@@ -30,7 +30,7 @@ class ArticleDetail(APIView):
         try:
             return Article.objects.get(pk=pk)
         except Article.DoesNotExist:
-            return HttpResponse(status=status.HTTP_404_NOT_FOUND)
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
     def get(self, request, pk):
         article = self.get_object(pk)
