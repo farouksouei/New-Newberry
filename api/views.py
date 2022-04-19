@@ -7,14 +7,15 @@ from rest_framework import viewsets
 from rest_framework import generics
 from rest_framework import mixins
 from django.shortcuts import get_object_or_404
-from rest_framework.authtoken.views import TokenAuthentication
+from rest_framework.authentication import TokenAuthentication
 # Create your views here.
 
 
 class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    Authentication_classes = (TokenAuthentication)
+    authentication_classes = [TokenAuthentication]
+    #Authentication_classes = (TokenAuthentication, )
 
 
 """
